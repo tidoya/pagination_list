@@ -36,7 +36,6 @@ export function getPaginatrionPageNumbers(
   return pages;
 }
 export function isMobile(width: number, height: number) {
-  console.log(width, height);
   return width < MobileSizesEmum.width && height >= MobileSizesEmum.height;
 }
 

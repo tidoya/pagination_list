@@ -11,11 +11,14 @@ import {
   BottomSection,
 } from "./List.styled";
 import { Pagination } from "../Pagination/Pagination";
-import { $currentPage } from "../../stores/List";
+import { $currentPage } from "../../stores/list";
 import { MainTable } from "../MainTable/MainTable";
+import { $isDesktop } from "../../stores/common";
+import { MainCards } from "../MainCards/MainCards";
 
 export function List({ comments }: ListProps) {
   const currentPage = useUnit($currentPage),
+    isDesktop = useUnit($isDesktop),
     itemsPerPage = 5,
     [filterText, setFilterText] = useState("");
 
@@ -48,11 +51,18 @@ export function List({ comments }: ListProps) {
         />
       </TopSection>
 
-      <MainContent>
-        <MainTable
-          comments={currentComments}
-          indexOfFirstItem={indexOfFirstItem}
-        />
+      <MainContent isDesktop={isDesktop}>
+        {isDesktop ? (
+          <MainTable
+            comments={currentComments}
+            indexOfFirstItem={indexOfFirstItem}
+          />
+        ) : (
+          <MainCards
+            comments={currentComments}
+            indexOfFirstItem={indexOfFirstItem}
+          />
+        )}
       </MainContent>
       <BottomSection>
         <Pagination totalPages={totalPages} />

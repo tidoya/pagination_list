@@ -12,7 +12,7 @@ import {
   goToNextPage,
   goToPreviousPage,
   setCurrentPage,
-} from "../../stores/List";
+} from "../../stores/list";
 
 export function Pagination({ totalPages }: PaginationProps) {
   const currentPage = useUnit($currentPage);

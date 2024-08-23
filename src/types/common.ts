@@ -8,7 +8,7 @@ export type PaginationProps = {
   totalPages: number;
 };
 
-export type MainTableProps = {
+export type MainProps = {
   comments: Comment[];
   indexOfFirstItem: number;
 };

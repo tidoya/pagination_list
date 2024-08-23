@@ -1,4 +1,4 @@
-import { MainTableProps } from "../../types/common";
+import { MainProps } from "../../types/common";
 import {
   Maintable,
   TableHead,
@@ -7,7 +7,7 @@ import {
   TableCell,
 } from "./MainTable.styled";
 
-export function MainTable({ comments, indexOfFirstItem }: MainTableProps) {
+export function MainTable({ comments, indexOfFirstItem }: MainProps) {
   return (
     <Maintable>
       <TableHead>
