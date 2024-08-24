@@ -56,11 +56,12 @@ export const TopSection = styled.header`
   margin-bottom: 20px;
 `;
 
-export const MainContent = styled.section<{ isDesktop: boolean }>`
+export const MainContent = styled.section<{ $isDesktop: boolean }>`
+  overflow: ${({ $isDesktop }) => ($isDesktop ? "hidden" : "scroll")};
+
   flex-grow: 1;
   width: 100%;
   height: 700px;
-  overflow: ${(props) => (props.isDesktop ? "hidden" : "scroll")};
 `;
 
 export const BottomSection = styled.footer`

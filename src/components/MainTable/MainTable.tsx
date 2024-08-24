@@ -21,12 +21,12 @@ export function MainTable({ comments, indexOfFirstItem }: MainProps) {
       </TableHead>
       <tbody>
         {comments.map((item, index) => (
-          <TableRow key={item.id}>
+          <TableRow key={item.getValue("id")}>
             <TableCell>{indexOfFirstItem + index + 1}</TableCell>
-            <TableCell>{item.name}</TableCell>
-            <TableCell>{item.postId}</TableCell>
-            <TableCell>{item.email}</TableCell>
-            <TableCell>{item.body}</TableCell>
+            <TableCell>{item.getValue("name")}</TableCell>
+            <TableCell>{item.getValue("postId")}</TableCell>
+            <TableCell>{item.getValue("email")}</TableCell>
+            <TableCell>{item.getValue("body")}</TableCell>
           </TableRow>
         ))}
       </tbody>

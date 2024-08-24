@@ -3,7 +3,6 @@ import { useUnit } from "effector-react";
 
 import { ListProps } from "../../types/common";
 import {
-  Maintable,
   WrapperList,
   SearchInput,
   MainContent,
@@ -51,7 +50,7 @@ export function List({ comments }: ListProps) {
         />
       </TopSection>
 
-      <MainContent isDesktop={isDesktop}>
+      <MainContent $isDesktop={isDesktop}>
         {isDesktop ? (
           <MainTable
             comments={currentComments}

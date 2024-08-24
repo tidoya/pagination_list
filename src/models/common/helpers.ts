@@ -41,25 +41,17 @@ export function isMobile(width: number, height: number) {
 
 export function throttle<T extends ThrottleFunction>(
   func: T,
-  limit: number
-): T {
-  let lastFunc: ReturnType<typeof setTimeout> | undefined;
-  let lastRan: number | undefined;
+  timeout: number
+): (...args: Parameters<T>) => void {
+  let timer: number | null = null;
 
-  return function (this: any, ...args: Parameters<T>) {
-    const context = this;
+  return function perform(...args: Parameters<T>) {
+    if (timer) return;
 
-    if (!lastRan) {
-      func.apply(context, args);
-      lastRan = Date.now();
-    } else {
-      clearTimeout(lastFunc);
-      lastFunc = setTimeout(() => {
-        if (Date.now() - lastRan! >= limit) {
-          func.apply(context, args);
-          lastRan = Date.now();
-        }
-      }, limit - (Date.now() - lastRan!));
-    }
-  } as T;
+    timer = window.setTimeout(() => {
+      func(...args);
+      clearTimeout(timer!);
+      timer = null;
+    }, timeout);
+  };
 }
